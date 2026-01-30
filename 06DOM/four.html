@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+    content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code |DOM</title>
+</head>
+<body style="background-color:  #212121; color:#fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addlang(langname){
+        const listitem=document.createElement('li');
+        listitem.innerHTML=`${langname}`//more traversing 
+        document.querySelector('.language').appendChild(listitem)
+    }
+    addlang("python");
+    addlang("java");
+
+    function addoptimizelang(langname){//more optimize
+        const listitem=document.createElement('li')
+        listitem.appendChild(document.createTextNode(langname))
+        document.querySelector('.language').appendChild(listitem)
+    }
+    addoptimizelang("c++");
+    addoptimizelang("css");
+
+    const updatelang=document.querySelector("li:nth-child(2)")
+    // updatelang.innerHTML="Mojo"//not optimze
+    const newli=document.createElement('li')//now optimized
+    newli.textContent="mojo"
+    updatelang.replaceWith(newli)
+     
+    //edit
+    const firstlang=document.querySelector("li:first-child")
+    firstlang.outerHTML='<li> TypeScript</li>'
+
+    //remove
+    const lastlang=document.querySelector('li:last-child')
+    lastlang.remove()
+
+</script>
+</html>
