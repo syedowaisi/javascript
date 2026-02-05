@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOSURES aur Chai</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">ORANGE</button>
+    <button id="green">GREEN</button>
+    
+</body>
+<script>
+    // lexical scoping
+    function init(){
+        let name="Mozilla"
+        function displayName(){
+            console.log("inner",name);
+        }
+        function inner(){
+            console.log("innertwo",name);
+        }
+        displayName()
+        inner()
+
+// inner() is lexically inside init()
+// So it can access outer’s variables
+
+    }
+    init();
+    console.log("outer",name) 
+
+//     //CLOSURE
+//     Closures (built on lexical scoping)
+// A closure is a function that remembers variables from its lexical scope even after the outer function has finished executing.
+    function func(){
+        const name="Mozilla"
+        function display(){
+            console.log(name)
+        }
+        return display;
+    }
+    const myfunc=func();
+    myfunc();
+</script>
+<script>
+    // document.getElementById('orange').onclick=function(){
+    //     document.body.style.backgroundColor="orange"
+    // }
+    // document.getElementById('green').onclick=function(){
+    //     document.body.style.backgroundColor="green"
+    // }
+
+    function clickHandler(color){
+        // document.body.style.backgroundColor=`${color}`;
+        return function(){ //closures
+            document.body.style.backgroundColor=`${color}`;
+        }
+    }
+
+    document.getElementById('orange').onclick=clickHandler("orange")
+    document.getElementById('green').onclick=clickHandler("green")
+
+</script>
+
+</html>
